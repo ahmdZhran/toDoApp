@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/widgets/list_view.dart';
 
 class TaskManager extends StatelessWidget {
   const TaskManager({Key? key}) : super(key: key);
@@ -64,6 +65,7 @@ class TaskManager extends StatelessWidget {
                     borderRadius: BorderRadius.circular(screenWidth * 0.08),
                     color: Colors.white,
                   ),
+                  child: const TaskList(),
                 ),
               )
             ],
