@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/widgets/add_task.dart';
 import 'package:task_manager/widgets/list_view.dart';
 
 class TaskManager extends StatelessWidget {
@@ -11,7 +12,10 @@ class TaskManager extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (context) => const AddTasks());
+        },
         backgroundColor: Colors.teal[400],
         child: const Icon(Icons.add),
       ),
