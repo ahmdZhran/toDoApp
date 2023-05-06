@@ -14,7 +14,13 @@ class TaskManager extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => const AddTasks());
+              isScrollControlled: true,
+              context: context,
+              builder: (context) => SingleChildScrollView(
+                  child: Container(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: const AddTasks())));
         },
         backgroundColor: Colors.teal[400],
         child: const Icon(Icons.add),
