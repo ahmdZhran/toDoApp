@@ -7,9 +7,33 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ListTile(
-      title: Text('Go To Gym'),
-      trailing: Checkbox(value: false, onChanged: null),
+    return ListTile(
+      title: const Text('Go To Gym'),
+      trailing: ChickBox(),
+    );
+  }
+}
+
+class ChickBox extends StatefulWidget {
+  const ChickBox({super.key});
+
+  @override
+  State<ChickBox> createState() => _ChickBoxState();
+}
+
+class _ChickBoxState extends State<ChickBox> {
+  bool? isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+      activeColor: Colors.teal[400],
+      value: isChecked,
+      onChanged: (value) {
+        setState(() {
+          isChecked = value;
+        });
+      },
     );
   }
 }
