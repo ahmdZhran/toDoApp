@@ -9,6 +9,6 @@ class TaskList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: const [CustomListTile()]);
+    return ListView(children: [CustomListTile(), CustomListTile()]);
   }
 }

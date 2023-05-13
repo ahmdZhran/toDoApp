@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AddTasks extends StatelessWidget {
-  const AddTasks({super.key});
+  final Function addTaskCallBack;
+  const AddTasks(this.addTaskCallBack, {super.key});
 
   @override
   Widget build(BuildContext context) {
+    String? newTaskTitle;
     return SizedBox(
       child: Padding(
         padding: const EdgeInsets.all(20),
@@ -23,6 +25,9 @@ class AddTasks extends StatelessWidget {
             cursorColor: Colors.teal[300],
             autofocus: true,
             textAlign: TextAlign.center,
+            onChanged: (newTask) {
+              newTaskTitle = newTask;
+            },
           ),
           const SizedBox(
             height: 20,
@@ -30,11 +35,12 @@ class AddTasks extends StatelessWidget {
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.teal[300],
-            ),
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.teal[400]),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                addTaskCallBack(newTaskTitle);
+              },
               child: const Text(
                 'ADD',
                 style: TextStyle(color: Colors.white),
