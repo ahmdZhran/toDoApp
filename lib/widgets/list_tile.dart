@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CustomListTile extends StatefulWidget {
-  const CustomListTile({super.key});
-
-  @override
-  State<CustomListTile> createState() => _CustomListTileState();
-}
-
-class _CustomListTileState extends State<CustomListTile> {
-  bool isChecked = false;
+class CustomListTile extends StatelessWidget {
+  final bool isChecked;
+  final String taskTitle;
+  const CustomListTile(
+      {super.key, required this.isChecked, required this.taskTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +14,17 @@ class _CustomListTileState extends State<CustomListTile> {
         style: TextStyle(
             decoration: isChecked ? TextDecoration.lineThrough : null),
       ),
-      trailing: ChickBox(
-        isChecked,
-        (bool? value) {
-          setState(() {
-            isChecked = value!;
-          });
-        },
+      trailing: Checkbox(
+        activeColor: Colors.teal[400],
+        value: isChecked,
+        onChanged: null, // onChanged: checkBoxChanged,
       ),
     );
   }
 }
 
-class ChickBox extends StatelessWidget {
-  final bool? checkBoxState;
-  final Function(bool?) checkBoxChanged;
-  const ChickBox(this.checkBoxState, this.checkBoxChanged, {super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      activeColor: Colors.teal[400],
-      value: checkBoxState,
-      onChanged: checkBoxChanged,
-    );
-  }
-}
+// (bool? value) {
+//   setState(() {
+//     isChecked = value!;
+//   });
+// },
