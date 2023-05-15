@@ -33,7 +33,9 @@ class _TaskManagerState extends State<TaskManager> {
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTasks((newTaskTitle) {
-                  print(newTaskTitle);
+                  setState(() {
+                    tasks.add(Task(name: newTaskTitle));
+                  });
                 }),
               ),
             ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class AddTasks extends StatelessWidget {
   final Function addTaskCallBack;
-  const AddTasks(this.addTaskCallBack, {super.key});
-
+  AddTasks(this.addTaskCallBack, {super.key});
+  String? newTaskTitle;
   @override
   Widget build(BuildContext context) {
     String? newTaskTitle;
