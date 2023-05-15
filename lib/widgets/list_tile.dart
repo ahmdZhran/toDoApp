@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 class CustomListTile extends StatelessWidget {
   final bool isChecked;
   final String taskTitle;
-  const CustomListTile(
-      {super.key, required this.isChecked, required this.taskTitle});
+  final void Function(bool?) checkBoxChanged;
+  const CustomListTile({
+    super.key,
+    required this.isChecked,
+    required this.taskTitle,
+    required this.checkBoxChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +22,8 @@ class CustomListTile extends StatelessWidget {
       trailing: Checkbox(
         activeColor: Colors.teal[400],
         value: isChecked,
-        onChanged: null, // onChanged: checkBoxChanged,
+        onChanged: checkBoxChanged,
       ),
     );
   }
 }
-
-// (bool? value) {
-//   setState(() {
-//     isChecked = value!;
-//   });
-// },

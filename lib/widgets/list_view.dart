@@ -23,7 +23,14 @@ class _TaskListState extends State<TaskList> {
       itemCount: tasks.length,
       itemBuilder: (context, index) {
         return CustomListTile(
-            isChecked: tasks[index].isDone, taskTitle: tasks[index].name);
+          isChecked: tasks[index].isDone,
+          taskTitle: tasks[index].name,
+          checkBoxChanged: (value) {
+            setState(() {
+              tasks[index].taskDone();
+            });
+          },
+        );
       },
     );
     //  ListView(children: [
