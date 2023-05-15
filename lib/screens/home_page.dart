@@ -11,10 +11,7 @@ class TaskManager extends StatefulWidget {
 }
 
 class _TaskManagerState extends State<TaskManager> {
-  List<Task> tasks = [
-    Task(name: "go to hell"),
-    Task(name: "going to Dhab"),
-  ];
+  List<Task> tasks = [];
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +32,7 @@ class _TaskManagerState extends State<TaskManager> {
                 child: AddTasks((newTaskTitle) {
                   setState(() {
                     tasks.add(Task(name: newTaskTitle));
+                    Navigator.pop(context);
                   });
                 }),
               ),
