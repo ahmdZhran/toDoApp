@@ -78,7 +78,7 @@ class _TaskManagerState extends State<TaskManager> {
                 padding: EdgeInsets.only(
                     top: screenHeight * 0.02, left: screenWidth * 0.03),
                 child: Text(
-                  '3 Tasks',
+                  '${tasks.length} Tasks',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: screenWidth * 0.045,
