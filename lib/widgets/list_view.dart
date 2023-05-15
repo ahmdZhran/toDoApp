@@ -4,30 +4,24 @@ import 'package:task_manager/models/tasks.dart';
 import 'package:task_manager/widgets/list_tile.dart';
 
 class TaskList extends StatefulWidget {
-  const TaskList({
-    super.key,
-  });
-
+  final List<Task> tasks;
+  const TaskList(this.tasks, {super.key});
   @override
   State<TaskList> createState() => _TaskListState();
 }
 
 class _TaskListState extends State<TaskList> {
-  List<Task> tasks = [
-    Task(name: "go to hell"),
-    Task(name: "going to Dhab"),
-  ];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: tasks.length,
+      itemCount: widget.tasks.length,
       itemBuilder: (context, index) {
         return CustomListTile(
-          isChecked: tasks[index].isDone,
-          taskTitle: tasks[index].name,
+          isChecked: widget.tasks[index].isDone,
+          taskTitle: widget.tasks[index].name,
           checkBoxChanged: (value) {
             setState(() {
-              tasks[index].taskDone();
+              widget.tasks[index].taskDone();
             });
           },
         );

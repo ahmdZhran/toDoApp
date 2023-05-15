@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/models/tasks.dart';
 import 'package:task_manager/widgets/add_task.dart';
 import 'package:task_manager/widgets/list_view.dart';
 
-class TaskManager extends StatelessWidget {
+class TaskManager extends StatefulWidget {
   const TaskManager({Key? key}) : super(key: key);
+
+  @override
+  State<TaskManager> createState() => _TaskManagerState();
+}
+
+class _TaskManagerState extends State<TaskManager> {
+  List<Task> tasks = [
+    Task(name: "go to hell"),
+    Task(name: "going to Dhab"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -80,7 +92,7 @@ class TaskManager extends StatelessWidget {
                     borderRadius: BorderRadius.circular(screenWidth * 0.08),
                     color: Colors.white,
                   ),
-                  child: const TaskList(),
+                  child: TaskList(tasks),
                 ),
               )
             ],
