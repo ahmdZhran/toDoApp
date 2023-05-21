@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/models/tasks.dart';
 import 'package:task_manager/widgets/add_task.dart';
 import 'package:task_manager/widgets/list_view.dart';
 import 'package:provider/provider.dart';
@@ -25,12 +24,7 @@ class TaskManager extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTasks((newTaskTitle) {
-                  // setState(() {
-                  //   tasks.add(Task(name: newTaskTitle));
-                  //   Navigator.pop(context);
-                  // });
-                }),
+                child: AddTasks((newTaskTitle) {}),
               ),
             ),
           );
