@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:task_manager/models/tasks.dart';
 import 'package:task_manager/widgets/add_task.dart';
 import 'package:task_manager/widgets/list_view.dart';
+import 'package:provider/provider.dart';
 
-class TaskManager extends StatefulWidget {
+import '../models/tasks_data.dart';
+
+class TaskManager extends StatelessWidget {
   const TaskManager({Key? key}) : super(key: key);
 
-  @override
-  State<TaskManager> createState() => _TaskManagerState();
-}
-
-class _TaskManagerState extends State<TaskManager> {
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -28,10 +26,10 @@ class _TaskManagerState extends State<TaskManager> {
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTasks((newTaskTitle) {
-                  setState(() {
-                    tasks.add(Task(name: newTaskTitle));
-                    Navigator.pop(context);
-                  });
+                  // setState(() {
+                  //   tasks.add(Task(name: newTaskTitle));
+                  //   Navigator.pop(context);
+                  // });
                 }),
               ),
             ),
@@ -74,9 +72,9 @@ class _TaskManagerState extends State<TaskManager> {
                 padding: EdgeInsets.only(
                     top: screenHeight * 0.02, left: screenWidth * 0.03),
                 child: Text(
-                  tasks.length > 1
-                      ? '${tasks.length} Tasks'
-                      : '${tasks.length} Task',
+                  Provider.of<TasksData>(context).tasks.length > 1
+                      ? '${Provider.of<TasksData>(context).tasks.length} Tasks'
+                      : '${Provider.of<TasksData>(context).tasks.length} Task',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: screenWidth * 0.045,
@@ -92,7 +90,7 @@ class _TaskManagerState extends State<TaskManager> {
                     borderRadius: BorderRadius.circular(screenWidth * 0.08),
                     color: Colors.white,
                   ),
-                  child: TaskList(tasks),
+                  child: const TaskList(),
                 ),
               )
             ],
