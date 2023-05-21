@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_manager/models/tasks_data.dart';
 
 class AddTasks extends StatelessWidget {
   final Function addTaskCallBack;
@@ -39,7 +41,9 @@ class AddTasks extends StatelessWidget {
                 color: Colors.teal[400]),
             child: TextButton(
               onPressed: () {
-                addTaskCallBack(newTaskTitle);
+                Provider.of<TasksData>(context, listen: false)
+                    .addTask(newTaskTitle!);
+                Navigator.pop(context);
               },
               child: const Text(
                 'ADD',
