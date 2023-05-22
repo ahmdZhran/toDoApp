@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class CustomListTile extends StatelessWidget {
   final bool isChecked;
   final String taskTitle;
   final void Function(bool?) checkBoxChanged;
   final void Function() deleteTask;
+
   const CustomListTile({
     super.key,
     required this.isChecked,
@@ -28,7 +30,11 @@ class CustomListTile extends StatelessWidget {
           Checkbox(
             activeColor: Colors.teal[400],
             value: isChecked,
-            onChanged: checkBoxChanged,
+            onChanged: (bool? newValue) {
+              final player = AudioPlayer();
+              newValue == true ? player.play(AssetSource("audio.m4a")) : null;
+              checkBoxChanged(newValue);
+            },
           ),
           IconButton(
             icon: const Icon(Icons.delete),
