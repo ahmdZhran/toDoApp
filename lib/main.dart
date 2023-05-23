@@ -4,10 +4,12 @@ import 'package:task_manager/screens/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'constants.dart';
+import 'models/tasks.dart';
 
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(kNotesBox);
+  Hive.registerAdapter(TaskAdapter());
   runApp(const MyApp());
 }
 
