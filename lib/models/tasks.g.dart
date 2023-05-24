@@ -6,24 +6,24 @@ part of 'tasks.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TaskAdapter extends TypeAdapter<Task> {
+class TaskAdapter extends TypeAdapter<TasksModels> {
   @override
   final int typeId = 0;
 
   @override
-  Task read(BinaryReader reader) {
+  TasksModels read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Task(
+    return TasksModels(
       name: fields[0] as String,
       isDone: fields[1] as bool,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Task obj) {
+  void write(BinaryWriter writer, TasksModels obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)

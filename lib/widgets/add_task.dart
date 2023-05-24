@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_manager/models/tasks.dart';
 import 'package:task_manager/models/tasks_data.dart';
 
 class AddTasks extends StatelessWidget {
@@ -61,8 +62,9 @@ class AddTasks extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
+                    String taskName = newTaskTitle!;
                     Provider.of<TasksData>(context, listen: false)
-                        .addTask(newTaskTitle!);
+                        .addTask(TasksModels(name: taskName, isDone: false));
                     Navigator.pop(context);
                   }
                 },

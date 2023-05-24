@@ -7,9 +7,11 @@ import 'constants.dart';
 import 'models/tasks.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  await Hive.openBox(kNotesBox);
   Hive.registerAdapter(TaskAdapter());
+  await Hive.openBox<TasksModels>(kNotesBox);
+
   runApp(const MyApp());
 }
 

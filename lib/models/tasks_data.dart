@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:task_manager/constants.dart';
 import 'package:task_manager/models/tasks.dart';
 
 class TasksData extends ChangeNotifier {
-  List<Task> tasks = [];
-  void addTask(String newTaskTitle) {
-    tasks.add(Task(name: newTaskTitle));
+  List<TasksModels> tasks = [];
+  addTask(TasksModels newTaskTitle) async {
+    var taskBox = Hive.box<TasksModels>(kNotesBox);
+    await taskBox.add(newTaskTitle);
     notifyListeners();
   }
 
-  void checkTaskState(Task task) {
+  void checkTaskState(TasksModels task) {
     task.taskDone();
     notifyListeners();
   }
 
-  void deleteTask(Task task) {
+  void deleteTask(TasksModels task) {
     tasks.remove(task);
     notifyListeners();
   }
