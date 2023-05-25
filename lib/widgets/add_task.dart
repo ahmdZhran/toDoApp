@@ -64,7 +64,8 @@ class AddTasks extends StatelessWidget {
                   if (_formKey.currentState!.validate()) {
                     String taskName = newTaskTitle!;
                     Provider.of<TasksData>(context, listen: false)
-                        .addTask(TasksModels(name: taskName, isDone: false));
+                        .addTask(TasksModel(name: taskName, isDone: false));
+
                     Navigator.pop(context);
                   }
                 },

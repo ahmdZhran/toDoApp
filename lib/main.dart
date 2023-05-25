@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TaskAdapter());
-  await Hive.openBox<TasksModels>(kNotesBox);
+  await Hive.openBox<TasksModel>(kNotesBox);
 
   runApp(const MyApp());
 }
