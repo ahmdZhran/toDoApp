@@ -17,30 +17,33 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        taskTitle,
-        style: TextStyle(
-          decoration: isChecked ? TextDecoration.lineThrough : null,
+    return Container(
+      color: Colors.grey[200],
+      child: ListTile(
+        title: Text(
+          taskTitle,
+          style: TextStyle(
+            decoration: isChecked ? TextDecoration.lineThrough : null,
+          ),
         ),
-      ),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Checkbox(
-            activeColor: Colors.teal[400],
-            value: isChecked,
-            onChanged: (bool? newValue) {
-              final player = AudioPlayer();
-              newValue == true ? player.play(AssetSource("audio.m4a")) : null;
-              checkBoxChanged(newValue);
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: deleteTask,
-          ),
-        ],
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Checkbox(
+              activeColor: Colors.teal[400],
+              value: isChecked,
+              onChanged: (bool? newValue) {
+                final player = AudioPlayer();
+                newValue == true ? player.play(AssetSource("audio.m4a")) : null;
+                checkBoxChanged(newValue);
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: deleteTask,
+            ),
+          ],
+        ),
       ),
     );
   }
