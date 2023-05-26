@@ -53,27 +53,49 @@ class AddTasks extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.teal[400],
-              ),
-              child: TextButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    String taskName = newTaskTitle!;
-                    Provider.of<TasksData>(context, listen: false)
-                        .addTask(TasksModel(name: taskName, isDone: false));
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.teal[400],
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        String taskName = newTaskTitle!;
+                        Provider.of<TasksData>(context, listen: false)
+                            .addTask(TasksModel(name: taskName, isDone: false));
 
-                    Navigator.pop(context);
-                  }
-                },
-                child: const Text(
-                  'ADD',
-                  style: TextStyle(color: Colors.white),
+                        Navigator.pop(context);
+                      }
+                    },
+                    child: const Text(
+                      'ADD',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.red[400],
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                )
+              ],
             ),
           ],
         ),
