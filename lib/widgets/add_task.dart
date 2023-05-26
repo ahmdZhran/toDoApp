@@ -66,34 +66,38 @@ class AddTasks extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.teal[400],
-                  ),
-                  child: TextButton(
-                    onPressed: () => _addTask(context),
-                    child: const Text(
-                      'ADD',
-                      style: TextStyle(color: Colors.white),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.teal[400],
+                    ),
+                    child: TextButton(
+                      onPressed: () => _addTask(context),
+                      child: const Text(
+                        'ADD',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(
                   width: 20,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.red[400],
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(color: Colors.white),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.red[400],
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
