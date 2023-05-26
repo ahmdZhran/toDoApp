@@ -5,6 +5,7 @@ import 'package:task_manager/models/tasks_data.dart';
 
 class AddTasks extends StatelessWidget {
   final Function addTaskCallBack;
+
   AddTasks(this.addTaskCallBack, {Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
@@ -14,8 +15,17 @@ class AddTasks extends StatelessWidget {
     if (value == null || value.isEmpty) {
       return 'Enter your task';
     }
-
     return null;
+  }
+
+  void _addTask(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      String taskName = newTaskTitle!;
+      Provider.of<TasksData>(context, listen: false)
+          .addTask(TasksModel(name: taskName, isDone: false));
+
+      Navigator.pop(context);
+    }
   }
 
   @override
@@ -62,15 +72,7 @@ class AddTasks extends StatelessWidget {
                     color: Colors.teal[400],
                   ),
                   child: TextButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        String taskName = newTaskTitle!;
-                        Provider.of<TasksData>(context, listen: false)
-                            .addTask(TasksModel(name: taskName, isDone: false));
-
-                        Navigator.pop(context);
-                      }
-                    },
+                    onPressed: () => _addTask(context),
                     child: const Text(
                       'ADD',
                       style: TextStyle(color: Colors.white),
@@ -94,7 +96,7 @@ class AddTasks extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],
